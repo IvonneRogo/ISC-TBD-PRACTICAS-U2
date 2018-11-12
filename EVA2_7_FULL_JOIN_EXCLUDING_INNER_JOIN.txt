@@ -1,0 +1,64 @@
+use evaluacion_2;
+select * from tablaa a 
+left join tablab b on a.nombre = b.nombre
+where b.nombre is null;
+
+select * from tablaa a 
+left join tablab b on a.nombre = b.nombre
+where b.nombre is null union
+select * from tablaa a 
+right join tablab b on a.nombre = b.nombre
+where a.nombre is null;
+
+use northwind;
+desc products;
+desc orderdetails;
+
+select * from orderdetails A 
+left join products B on a.productid = b.productid 
+where b.productid is null union 
+select * from orderdetails A 
+right join products B on a.productid = b.productid 
+where a.productid is null;
+
+desc customers;
+desc orders;
+
+ select * from customers a 
+ left join orders b on a.customerid = b.customerid 
+ where b.customerid is null union 
+ select * from customers a 
+ right join orders b on a.customerid = b.customerid 
+ where a.customerid is null;
+ 
+ select a.companyname from customers a 
+ left join orders b on a.customerid = b.customerid 
+ where b.customerid is null union 
+ select a.companyname from customers a 
+ right join orders b on a.customerid = b.customerid 
+ where a.customerid is null;
+ 
+ select * from customers a 
+ left join orders b on a.customerid = b.customerid 
+ where b.customerid is null union 
+ select * from customers a 
+ right join orders b on a.customerid = b.customerid 
+ where a.customerid is null;
+ 
+ select b.customerid, a.companyname 
+ from customers a 
+ left join orders b on a.customerid = b.customerid 
+ where b.customerid is null union 
+ select b.customerid, a.companyname 
+ from customers a 
+ right join orders b on a.customerid = b.customerid 
+ where a.customerid is null;
+ 
+ select b.customerid, a.companyname 
+ from customers a 
+ left join orders b on a.customerid = b.customerid 
+ where b.customerid is null union all  
+ select b.customerid, a.companyname 
+ from customers a 
+ right join orders b on a.customerid = b.customerid 
+ where a.customerid is null;

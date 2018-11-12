@@ -1,0 +1,47 @@
+use evaluacion_2;
+desc tablaa;
+select * from tablaa;
+select * from tablab;
+select *  from tablaa a 
+inner join tablab b on a.nombre = b.nombre;
+
+/*COMO NO HAY COINCIDENCIAS DEPENDIENDO DE LA TABLA*/
+
+select * from tablaa a
+left outer join tablab b on a.nombre = b.nombre;
+select * from tablaa a
+right outer join tablab b on a.nombre = b.nombre;
+
+
+select * from tablaa a
+left outer join tablab b on a.nombre = b.nombre
+where b.nombre is null;
+
+select * from tablaa a
+right outer join tablab b on a.nombre = b.nombre
+where b.nombre is null;
+
+
+
+use northwind;
+/*OBTENER */
+
+/*ORDERS(LEFT)			CUSTOMERS (RIGHT)*/
+
+select a.orderid, b.companyname from orders a
+right join customers b on a.customerid=b.customerid
+order by orderid;
+
+select a.orderid, b.companyname from orders a
+right join customers b on a.customerid=b.customerid
+where a.orderid is null
+order by orderid;
+
+select a.orderid, b.companyname from orders a
+left join customers b on a.customerid=b.customerid
+order by orderid;
+
+
+select a.orderid, b.productname from orderdetails a
+right join products b on a.productid=b.productid 
+where a.productid is null;/*where a.orderid is null;*/
